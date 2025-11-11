@@ -41,14 +41,10 @@ function getIntervalArray(start, end) {
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
 function sumArrays(arr1, arr2) {
-  const lengthNewArr = Math.max(arr1.length, arr2.length);
-  const resultArr = new Array(lengthNewArr).fill(0);
-
-  arr1.forEach((val, i) => { resultArr[i] += val; });
-  arr2.forEach((val, i) => { resultArr[i] += val; });
-
-
-  return resultArr;
+  return Array.from(
+    { length: Math.max(arr1.length, arr2.length) },
+    (_, i) => (arr1[i] ?? 0) + (arr2[i] ?? 0)
+  );
 }
 
 /**
